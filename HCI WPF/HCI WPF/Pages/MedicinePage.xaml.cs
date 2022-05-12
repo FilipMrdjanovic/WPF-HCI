@@ -1,5 +1,8 @@
-﻿using System;
+﻿using HCI_WPF.Models;
+using HCI_WPF.Services;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,14 +23,32 @@ namespace HCI_WPF.Pages
     /// </summary>
     public partial class MedicinePage : Page
     {
+        private int colNum = 0;
+        public MedicineService medicineService = new MedicineService();
+        public ObservableCollection<Medicine> medicine
+        {
+            get;
+            set;
+        }
         public MedicinePage()
         {
             InitializeComponent();
+            this.DataContext = this;
+            medicine = new ObservableCollection<Medicine>();
+
+            foreach (Medicine m in medicineService.GetAll()) {
+                medicine.Add(m);
+            }
+
+            btnEdit.IsEnabled = false;
+            btnDelete.IsEnabled = false;
+
         }
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        private void dgMedicine_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            btnEdit.IsEnabled = true;
+            btnDelete.IsEnabled = true;
         }
     }
 }

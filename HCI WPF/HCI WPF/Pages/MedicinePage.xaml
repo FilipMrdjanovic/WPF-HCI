@@ -8,7 +8,20 @@
       d:DesignHeight="570" d:DesignWidth="400" Background="WhiteSmoke"
       Title="MedicinePage">
 
-    <Grid Loaded="Grid_Loaded">
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,10,0"/>
+
+    <Grid>
+        <DataGrid x:Name="dgMedicine" ItemsSource="{Binding Path=medicine}" IsReadOnly="True" 
+                  SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
+                  Height="380" VerticalAlignment="Top" Width="380" SelectionChanged="dgMedicine_SelectionChanged" Margin="0,53,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="NAME" Binding="{Binding Name}" Width="260"/>
+                <DataGridTextColumn Header="QUANTITY" Binding="{Binding Quantity}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="MEDICINE" HorizontalAlignment="Center" Margin="0,-16,0,0" VerticalAlignment="Top" FontSize="48" Height="69"/>
+        <Button x:Name="btnEdit" Content="EDIT" HorizontalAlignment="Left" Margin="10,447,0,0" VerticalAlignment="Top" Width="118" Height="80" FontSize="20" Background="#FFEA9314"/>
+        <Button x:Name="btnDelete" Content="DELETE" HorizontalAlignment="Left" Margin="272,448,0,0" VerticalAlignment="Top" Width="118" Height="79" FontSize="20" Background="#FFEA7614"/>
+        <Button x:Name="btnCreate" Content="CREATE" HorizontalAlignment="Center" Margin="0,448,0,0" VerticalAlignment="Top" Width="118" Height="79" FontSize="20" Background="#FFF5BA63"/>
     </Grid>
 </Page>
