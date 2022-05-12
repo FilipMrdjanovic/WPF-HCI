@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>HCI_WPF</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\icon-equipment.png" />
+    <None Remove="Resources\icon-help.png" />
+    <None Remove="Resources\icon-medicine.png" />
+    <None Remove="Resources\icon-renovation.png" />
+    <None Remove="Resources\icon-room.png" />
+    <None Remove="Resources\icon-statistics.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icon-medicine.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\icon-equipment.png" />
+    <Resource Include="Resources\icon-help.png" />
+    <Resource Include="Resources\icon-renovation.png" />
+    <Resource Include="Resources\icon-room.png" />
+    <Resource Include="Resources\icon-statistics.png" />
+  </ItemGroup>
+
+</Project>
