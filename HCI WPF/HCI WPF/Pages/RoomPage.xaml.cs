@@ -93,7 +93,7 @@ namespace HCI_WPF.Pages
         {
             if (dgRooms.SelectedItem != null)
             {
-                if (MessageBox.Show("Delete room with data:\nName: " + selectedRoomItem.Name + "\Floor: " + selectedRoomItem.Floor, "Login Error", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Delete room with data:\nName: " + selectedRoomItem.Name + "\nFloor: " + selectedRoomItem.Floor, "Login Error", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     roomService.Delete(selectedRoomItem.Id);
                     RefreshPage();
