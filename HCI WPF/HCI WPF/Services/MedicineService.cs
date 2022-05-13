@@ -29,5 +29,10 @@ namespace HCI_WPF.Services
         {
             medicineRepository.Delete(id);
         }
+
+        public void Update(Medicine medicine)
+        {
+            medicineRepository.Update(medicine);
+        }
     }
 }

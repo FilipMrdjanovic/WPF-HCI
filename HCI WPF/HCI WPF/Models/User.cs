@@ -14,6 +14,7 @@ namespace HCI_WPF.Models
         public String Name { get; set; }
         public String Surname { get; set; }
         public String Email { get; set; }
+        public static readonly User Instance = new User();
 
         public User(int id, string username, string password, string name, string surname, string email)
         {
@@ -23,6 +24,10 @@ namespace HCI_WPF.Models
             Name = name;
             Surname = surname;
             Email = email;
+        }
+        public User()
+        {
+
         }
     }
 }

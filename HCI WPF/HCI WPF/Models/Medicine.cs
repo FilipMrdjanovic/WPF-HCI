@@ -12,12 +12,14 @@ namespace HCI_WPF.Models
         public string Name { get; set; }
         public int Quantity { get; set; }
 
+        public static readonly Medicine Instance = new Medicine();
         public Medicine(int id, string name, int quantity)
         {
             Id = id;
             Name = name;
             Quantity = quantity;
         }
+
 
         public Medicine()
         {

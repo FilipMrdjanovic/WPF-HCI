@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace HCI_WPF.Repository
 {
-    public class MedicineRepository
+    public class RoomRepository
     {
-        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\medicine.json";
-        private List<Medicine> allMedicine = new List<Medicine>();
+        private readonly string fileLocation = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName + "\\Data\\rooms.json";
+        private List<Room> allRoom = new List<Room>();
 
 
-        public MedicineRepository()
+        public RoomRepository()
         {
             ReadJson();
         }
@@ -32,31 +32,31 @@ namespace HCI_WPF.Repository
                 string json = r.ReadToEnd();
                 if (json != "")
                 {
-                    allMedicine = JsonConvert.DeserializeObject<List<Medicine>>(json);
+                    allRoom = JsonConvert.DeserializeObject<List<Room>>(json);
                 }
             }
         }
         public void WriteToJson()
         {
-            string json = JsonConvert.SerializeObject(allMedicine);
+            string json = JsonConvert.SerializeObject(allRoom);
             File.WriteAllText(fileLocation, json);
         }
 
-        public List<Medicine> GetAll()
+        public List<Room> GetAll()
         {
             ReadJson();
-            return allMedicine;
+            return allRoom;
         }
 
-        public Medicine GetById(int id)
+        public Room GetById(int id)
         {
             ReadJson();
-            return allMedicine.Find(obj => obj.Id == id);
+            return allRoom.Find(obj => obj.Id == id);
         }
-        public void Save(Medicine medicine)
+        public void Save(Room room)
         {
 
-            allMedicine.Add(medicine);
+            allRoom.Add(room);
             WriteToJson();
         }
 
@@ -64,23 +64,23 @@ namespace HCI_WPF.Repository
         {
             ReadJson();
             int counter = 0;
-            foreach(Medicine medicine in allMedicine)
+            foreach (Room room in allRoom)
             {
-                if (medicine.Id == id)
+                if (room.Id == id)
                     break;
                 else
                     counter++;
             }
-            //int index = allMedicine.FindIndex(obj => obj.Id == id);
-            allMedicine.RemoveAt(counter);
+            //int index = allRoom.FindIndex(obj => obj.Id == id);
+            allRoom.RemoveAt(counter);
             WriteToJson();
         }
-        public void Update(Medicine medicine)
+        public void Update(Room room)
         {
             ReadJson();
-            Medicine passedMedicine = GetById(medicine.Id);
-            passedMedicine.Name = medicine.Name;
-            passedMedicine.Quantity = medicine.Quantity;
+            Room passedRoom = GetById(room.Id);
+            passedRoom.Name = room.Name;
+            passedRoom.Floor = room.Floor;
 
             WriteToJson();
         }

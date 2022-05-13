@@ -20,7 +20,8 @@ namespace HCI_WPF.WPF
     /// </summary>
     public partial class MainPageWPF : Window
     {
-        public MainPageWPF(User user)
+        public static readonly MainPageWPF Instance = new MainPageWPF(User.Instance.Id);
+        public MainPageWPF(int id)
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -41,5 +42,17 @@ namespace HCI_WPF.WPF
         {
             navigateToPage("MedicinePage");
         }
+
+        private void btnRoom_Click(object sender, RoutedEventArgs e)
+        {
+            navigateToPage("RoomPage");
+        }
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            var LoginPage = new MainWindow();
+            LoginPage.Show();
+            this.Close();
+        }
+
     }
 }

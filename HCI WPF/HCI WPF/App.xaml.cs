@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace HCI_WPF
 {
@@ -13,5 +14,7 @@ namespace HCI_WPF
     /// </summary>
     public partial class App : Application
     {
+        public static Window ActivatedWindow {get;set; }
+        public static Page ActivatedPage{ get; set; }
     }
 }

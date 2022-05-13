@@ -35,19 +35,20 @@ namespace HCI_WPF
         private void SignInButton(object sender, RoutedEventArgs e)
         {
             if (!Regex.IsMatch(txtUsername.Text, @"^(?!\s*$).+") || !Regex.IsMatch(txtPassword.Password, @"^(?!\s*$).+"))
-                MessageBox.Show("Please enter credentials", "Login Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please enter credentials", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
                 User loggedUser = controller.Login(txtUsername.Text, txtPassword.Password);
                 if (loggedUser != null)
                 {
-                    var MainPage = new MainPageWPF(loggedUser);
+                    var MainPage = new MainPageWPF(loggedUser.Id);
+                    User.Instance.Id = loggedUser.Id;
                     MainPage.Show();
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Wrong credentials", "Login Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Wrong credentials", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
@@ -55,6 +56,11 @@ namespace HCI_WPF
         }
 
         private void HelpButton(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_WPF"
         mc:Ignorable="d"
-        Title="LOGIN" Height="650" Width="400"
+        Title="LOGIN" Height="750" Width="400"
         FocusManager.FocusedElement="{Binding ElementName=txtUsername}">
+
+    <Window.Resources>
+        <Style x:Key="btnHelp" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+    </Window.Resources>
     <Grid>
 
         <Line X1="50" Y1="83" X2="120" Y2="83" Stroke="Black" StrokeThickness="3" />
@@ -21,13 +28,17 @@
         <TextBox Name="txtUsername" BorderThickness="0,0,0,2" BorderBrush="Black"  HorizontalAlignment="Center" Margin="0,156,0,0" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" FontSize="18" FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}" />
         <PasswordBox Name="txtPassword" BorderThickness="0,0,0,2" BorderBrush="Black"  HorizontalContentAlignment="Center" Margin="0,221,0,0" VerticalAlignment="Top" Width="248" FontSize="18"/>
         <Button Content="SIGN IN" IsDefault="True" HorizontalContentAlignment="Center" Margin="76,270,76,0" VerticalAlignment="Top" Height="44" FontSize="22" Background="#FFEA9314" Click="SignInButton"/>
-
+        
         <!-- Help button -->
-        <Label Content="Need help?" HorizontalAlignment="Left" Margin="157,320,0,0" VerticalAlignment="Top" FontWeight="Normal" Background="#00000000" Foreground="Gray"/>
-        <Image Source="Resources/icon-help.png" Margin="226,324,155,292"/>
-        <Button Margin="143,323,143,290" Background="Transparent" HorizontalContentAlignment="Right" BorderBrush="Transparent" Click="HelpButton">
+        <Button Content="NEED HELP?" 
+                x:Name="btnHelp"
+                HorizontalAlignment="Center"
+                Margin="0,326,0,0" 
+                VerticalAlignment="Top"
+                Foreground="Gray"
+                Style="{StaticResource btnHelp}"
+                Click="btnHelp_Click"/>
 
-        </Button>
 
     </Grid>
 </Window>
