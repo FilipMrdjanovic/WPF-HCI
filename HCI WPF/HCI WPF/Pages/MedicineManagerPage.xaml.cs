@@ -59,7 +59,8 @@ namespace HCI_WPF.Pages
                 medicine.Quantity = Convert.ToInt32(txtQuantity.Text);
                 medicineService.Update(medicine);
 
-                ((Window)Window.GetWindow(this)).Close();
+                MainPageWPF.navigateToPage("MedicinePage");
+                //((Window)Window.GetWindow(this)).Close();
 
             }
         }
@@ -80,7 +81,8 @@ namespace HCI_WPF.Pages
                 Medicine medicine = new Medicine(maxId + 1, txtName.Text, Convert.ToInt32(txtQuantity.Text));
                 medicineService.Save(medicine);
 
-                ((Window)Window.GetWindow(this)).Close();
+                MainPageWPF.navigateToPage("MedicinePage");
+                //((Window)Window.GetWindow(this)).Close();
             }
         }
 
@@ -98,6 +100,11 @@ namespace HCI_WPF.Pages
                 btnEdit.IsEnabled = btnCreate.IsEnabled = false;
             else
                 btnEdit.IsEnabled = btnCreate.IsEnabled = true;
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            MainPageWPF.navigateToPage("MedicinePage");
         }
     }
 }

@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\icon-back.png" />
+    <None Remove="Resources\icon-create.png" />
+    <None Remove="Resources\icon-delete.png" />
+    <None Remove="Resources\icon-edit.png" />
     <None Remove="Resources\icon-equipment.png" />
     <None Remove="Resources\icon-help.png" />
     <None Remove="Resources\icon-logout.png" />
@@ -16,9 +20,15 @@
     <None Remove="Resources\icon-renovation.png" />
     <None Remove="Resources\icon-room.png" />
     <None Remove="Resources\icon-statistics.png" />
+    <None Remove="Resources\image-wave-bottom.png" />
+    <None Remove="Resources\image-wave-top.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\icon-back.png" />
+    <Resource Include="Resources\icon-create.png" />
+    <Resource Include="Resources\icon-delete.png" />
+    <Resource Include="Resources\icon-edit.png" />
     <Resource Include="Resources\icon-logout.png" />
     <Resource Include="Resources\icon-medicine.png" />
   </ItemGroup>
@@ -33,6 +43,8 @@
     <Resource Include="Resources\icon-renovation.png" />
     <Resource Include="Resources\icon-room.png" />
     <Resource Include="Resources\icon-statistics.png" />
+    <Resource Include="Resources\image-wave-bottom.png" />
+    <Resource Include="Resources\image-wave-top.png" />
   </ItemGroup>
 
 </Project>

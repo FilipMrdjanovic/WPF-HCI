@@ -5,9 +5,31 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_WPF.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="750" d:DesignWidth="414"
-      Title="MedicineManagerPage"
-      Background="white">
+      d:DesignHeight="570" d:DesignWidth="400" Background="White"
+      Title="MedicineManagerPage">
+
+    <Page.Resources>
+        <Style x:Key="btnBack" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+
     <Grid>
 
         <Line X1="50" Y1="83" X2="85" Y2="83" Stroke="Black" StrokeThickness="3" />
@@ -37,7 +59,7 @@
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
                  Width="248" FontSize="18" TextChanged="txtQuantity_TextChanged"/>
-        
+
         <Button x:Name="btnEdit" Content="EDIT" 
                 IsDefault="True" 
                 HorizontalContentAlignment="Center" 
@@ -58,6 +80,31 @@
                 Background="#FFEA9314" 
                 Click="CreateMedicine"/>
 
+        <Button x:Name="btnBack" 
+                Height="80"
+                Width="80"
+                FontSize="22" 
+                Background="Transparent" 
+                Click="Back" Margin="5,488,315,2"
+                Style="{StaticResource btnBack}">
+            <Image Width="40"
+                        Source="..\Resources\icon-back.png">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=btnBack, Path=IsMouseOver}" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="0" Color="Black" Opacity="1" BlurRadius="10"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Button>
+       
     </Grid>
 
 </Page>

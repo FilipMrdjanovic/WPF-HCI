@@ -45,15 +45,15 @@ namespace HCI_WPF.Pages
             this.DataContext = this;
             medicine = new ObservableCollection<Medicine>();
 
-            btnEdit.IsEnabled = false;
-            btnDelete.IsEnabled = false; 
+            //btnEdit.IsEnabled = false;
+            //btnDelete.IsEnabled = false; 
         }
 
         private void dgMedicine_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnEdit.IsEnabled = true;
-            btnDelete.IsEnabled = true;
-            btnCreate.IsEnabled = false;
+            //btnEdit.IsEnabled = true;
+            //btnDelete.IsEnabled = true;
+            //btnCreate.IsEnabled = false;
             selectedMedicineItem = (Medicine)dgMedicine.SelectedItem;
         }
 
@@ -61,33 +61,38 @@ namespace HCI_WPF.Pages
         {
             if(dgMedicine.SelectedItem != null)
             {
-                ManageDataWPF DataManager = new ManageDataWPF();
+                //ManageDataWPF DataManager = new ManageDataWPF();
 
-                DataManager.pageName = "MedicineManagerPage";
-                DataManager.Title = "Medicine Manager Page";
+                //DataManager.pageName = "MedicineManagerPage";
+                //DataManager.Title = "Medicine Manager Page";
 
 
                 Medicine.Instance.Id = selectedMedicineItem.Id;
                 Medicine.Instance.Name = selectedMedicineItem.Name;
                 Medicine.Instance.Quantity = selectedMedicineItem.Quantity;
 
-                DataManager.Show();
+
+                MainPageWPF.navigateToPage("MedicineManagerPage");
+                //DataManager.Show();
             }
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-          
-            ManageDataWPF DataManager = new ManageDataWPF();
 
-            DataManager.pageName = "MedicineManagerPage";
-            DataManager.Title = "Medicine Manager Page";
+
+            MainPageWPF.navigateToPage("MedicineManagerPage");
+
+           // ManageDataWPF DataManager = new ManageDataWPF();
+
+            //DataManager.pageName = "MedicineManagerPage";
+            //DataManager.Title = "Medicine Manager Page";
 
             Medicine.Instance.Id = -1;
             Medicine.Instance.Name = "";
             Medicine.Instance.Quantity = 0;
 
-            DataManager.Show();
+            //DataManager.Show();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

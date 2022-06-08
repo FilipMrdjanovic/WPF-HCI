@@ -5,11 +5,33 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_WPF.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="570" d:DesignWidth="400" Background="WhiteSmoke"
+      d:DesignHeight="550" d:DesignWidth="400" Background="White"
       Title="MedicinePage" Loaded="Page_Loaded">
 
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderThickness="0">
+
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
 
     <Grid>
+
+        
         <DataGrid x:Name="dgMedicine" ItemsSource="{Binding Path=medicine}" IsReadOnly="True" 
                   SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" 
                   Height="429" VerticalAlignment="Top" Width="380" SelectionChanged="dgMedicine_SelectionChanged" Margin="0,53,0,0">
@@ -20,8 +42,77 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="MEDICINE" HorizontalAlignment="Center" Margin="0,-16,0,0" VerticalAlignment="Top" FontSize="48" Height="69"/>
-        <Button x:Name="btnEdit" Content="EDIT" HorizontalAlignment="Left" Margin="10,487,0,0" VerticalAlignment="Top" Width="118" Height="80" FontSize="20" Background="#FFEA9314" Click="btnEdit_Click"/>
-        <Button x:Name="btnDelete" Content="DELETE" HorizontalAlignment="Left" Margin="272,488,0,0" VerticalAlignment="Top" Width="118" Height="79" FontSize="20" Background="#FFEA7614" Click="btnDelete_Click"/>
-        <Button x:Name="btnCreate" Content="CREATE" HorizontalAlignment="Center" Margin="0,488,0,0" VerticalAlignment="Top" Width="118" Height="79" FontSize="20" Background="#FFF5BA63" Click="btnCreate_Click"/>
+        <StackPanel
+                    Grid.RowSpan="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0,487,0,0">
+            <Button x:Name="btnEdit" 
+                Width="60" 
+                Height="60" 
+                Click="btnEdit_Click">
+                <Image Width="35"
+                        Source="..\Resources\icon-edit.png">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=btnEdit, Path=IsMouseOver}" Value="True">
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect ShadowDepth="0" Color="Orange" Opacity="1" BlurRadius="10"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Button>
+            <Button x:Name="btnCreate" 
+                Width="60" 
+                Height="60" 
+                Click="btnCreate_Click">
+                <Image Width="35"
+                        Source="..\Resources\icon-create.png">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=btnCreate, Path=IsMouseOver}" Value="True">
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect ShadowDepth="0" Color="Green" Opacity="1" BlurRadius="10"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Button>
+            <Button x:Name="btnDelete" 
+                Width="60" 
+                Height="60" 
+                Click="btnDelete_Click">
+                <Image Width="35"
+                        Source="..\Resources\icon-delete.png">
+                    <Image.Style>
+                        <Style TargetType="Image">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=btnDelete, Path=IsMouseOver}" Value="True">
+                                    <Setter Property="Effect">
+                                        <Setter.Value>
+                                            <DropShadowEffect ShadowDepth="0" Color="Red" Opacity="1" BlurRadius="10"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </Button>
+        </StackPanel>
+        <Image HorizontalAlignment="Center" Height="100" Margin="0,-58,0,0" VerticalAlignment="Top" Width="100"/>
+
     </Grid>
 </Page>
