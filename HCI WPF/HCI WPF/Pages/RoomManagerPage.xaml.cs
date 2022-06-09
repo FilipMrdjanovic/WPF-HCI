@@ -1,5 +1,6 @@
 ﻿using HCI_WPF.Models;
 using HCI_WPF.Services;
+using HCI_WPF.WPF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +59,8 @@ namespace HCI_WPF.Pages
                 room.Floor = Convert.ToInt32(txtFloor.Text);
                 roomService.Update(room);
 
-                ((Window)Window.GetWindow(this)).Close();
+                MainPageWPF.navigateToPage("RoomPage");
+                //((Window)Window.GetWindow(this)).Close();
 
             }
         }
@@ -79,7 +81,8 @@ namespace HCI_WPF.Pages
                 Room room = new Room(maxId + 1, txtName.Text, Convert.ToInt32(txtFloor.Text));
                 roomService.Save(room);
 
-                ((Window)Window.GetWindow(this)).Close();
+                MainPageWPF.navigateToPage("RoomPage");
+                //((Window)Window.GetWindow(this)).Close();
             }
         }
 
@@ -97,6 +100,11 @@ namespace HCI_WPF.Pages
                 btnEdit.IsEnabled = btnCreate.IsEnabled = false;
             else
                 btnEdit.IsEnabled = btnCreate.IsEnabled = true;
+        }
+
+        private void Back(object sender, RoutedEventArgs e)
+        {
+            MainPageWPF.navigateToPage("MedicinePage");
         }
     }
 }

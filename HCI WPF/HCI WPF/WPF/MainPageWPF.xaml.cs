@@ -47,6 +47,11 @@ namespace HCI_WPF.WPF
         {
             navigateToPage("RoomPage");
         }
+        private void btnRenovation_Click(object sender, RoutedEventArgs e)
+        {
+
+            navigateToPage("RenovationPage");
+        }
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             var LoginPage = new MainWindow();

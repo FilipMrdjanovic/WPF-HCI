@@ -60,33 +60,36 @@ namespace HCI_WPF.Pages
         {
             if (dgRooms.SelectedItem != null)
             {
-                ManageDataWPF DataManager = new ManageDataWPF();
+                //ManageDataWPF DataManager = new ManageDataWPF();
 
-                DataManager.pageName = "RoomManagerPage";
-                DataManager.Title = "Room Manager Page";
+                //DataManager.pageName = "RoomManagerPage";
+                //DataManager.Title = "Room Manager Page";
 
 
                 Room.Instance.Id = selectedRoomItem.Id;
                 Room.Instance.Name = selectedRoomItem.Name;
                 Room.Instance.Floor = selectedRoomItem.Floor;
 
-                DataManager.Show();
+                MainPageWPF.navigateToPage("RoomManagerPage");
+
+                //DataManager.Show();
             }
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
 
-            ManageDataWPF DataManager = new ManageDataWPF();
+            //ManageDataWPF DataManager = new ManageDataWPF();
 
-            DataManager.pageName = "RoomManagerPage";
-            DataManager.Title = "Room Manager Page";
+            //DataManager.pageName = "RoomManagerPage";
+            //DataManager.Title = "Room Manager Page";
 
             Room.Instance.Id = -1;
             Room.Instance.Name = "";
             Room.Instance.Floor = 0;
 
-            DataManager.Show();
+            MainPageWPF.navigateToPage("RoomManagerPage");
+            //DataManager.Show();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
