@@ -85,5 +85,10 @@ namespace HCI_WPF.WPF
         {
             navigateToPage("EquipmentPage");
         }
+
+        private void btnStatistics_Click(object sender, RoutedEventArgs e)
+        {
+            navigateToPage("StatisticsPage");
+        }
     }
 }

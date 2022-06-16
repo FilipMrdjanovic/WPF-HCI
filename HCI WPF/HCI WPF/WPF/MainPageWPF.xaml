@@ -211,7 +211,7 @@
             <Button Width="80"
                     Grid.Column="4"
                     Grid.ColumnSpan="1"
-                    x:Name="btnStatistics">
+                    x:Name="btnStatistics" Click="btnStatistics_Click">
                 <Image Width="60"
                        Source="..\Resources\icon-statistics.png">
                     <Image.Style>
