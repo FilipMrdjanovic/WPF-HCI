@@ -18,64 +18,64 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-
 namespace HCI_WPF.Pages
 {
     /// <summary>
-    /// Interaction logic for RenovationPage.xaml
+    /// Interaction logic for EquipmentPage.xaml
     /// </summary>
-    public partial class RenovationPage : Page
+    public partial class EquipmentPage : Page
     {
-        public RenovationService renovationService;
-        public Renovation selectedRenovationItem;
+        public EquipmentService equipmentService;
+        public Equipment selectedEquipmentItem;
 
-        public static readonly RenovationPage Instance = new RenovationPage();
+        public static readonly EquipmentPage Instance = new EquipmentPage();
 
         public bool refresh { get; set; }
 
-        public ObservableCollection<Renovation> renovation
+        public ObservableCollection<Equipment> equipment
         {
             get;
             set;
         }
-        public RenovationPage()
+        public EquipmentPage()
         {
             InitializeComponent();
 
             refresh = false;
             this.DataContext = this;
-            renovation = new ObservableCollection<Renovation>();
+            equipment = new ObservableCollection<Equipment>();
 
             //btnEdit.IsEnabled = false;
             //btnDelete.IsEnabled = false; 
         }
 
-        private void dgRenovation_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dgEquipment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             //btnEdit.IsEnabled = true;
             //btnDelete.IsEnabled = true;
             //btnCreate.IsEnabled = false;
-            selectedRenovationItem = (Renovation)dgRenovation.SelectedItem;
+            selectedEquipmentItem = (Equipment)dgEquipment.SelectedItem;
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            if (dgRenovation.SelectedItem != null)
+            if (dgEquipment.SelectedItem != null)
             {
 
                 MainPageWPF.ButtonEnabledInstance.enableButton = true;
                 //ManageDataWPF DataManager = new ManageDataWPF();
 
-                //DataManager.pageName = "RenovationManagerPage";
-                //DataManager.Title = "Renovation Manager Page";
+                //DataManager.pageName = "EquipmentManagerPage";
+                //DataManager.Title = "Equipment Manager Page";
 
 
-                Renovation.Instance.Id = selectedRenovationItem.Id;
-                Renovation.Instance.Description = selectedRenovationItem.Description;
-                Renovation.Instance.TypeOfRenovation= selectedRenovationItem.TypeOfRenovation;
+                Equipment.Instance.Id = selectedEquipmentItem.Id;
+                Equipment.Instance.Name = selectedEquipmentItem.Name;
+                Equipment.Instance.Quantity = selectedEquipmentItem.Quantity;
+                Equipment.Instance.Location = selectedEquipmentItem.Location;
 
 
-                MainPageWPF.navigateToPage("RenovationManagerPage");
+                MainPageWPF.navigateToPage("EquipmentManagerPage");
                 //DataManager.Show();
             }
         }
@@ -87,27 +87,28 @@ namespace HCI_WPF.Pages
             MainPageWPF.ButtonEnabledInstance.createButton = true;
 
 
-            MainPageWPF.navigateToPage("RenovationManagerPage");
+            MainPageWPF.navigateToPage("EquipmentManagerPage");
 
             // ManageDataWPF DataManager = new ManageDataWPF();
 
-            //DataManager.pageName = "RenovationManagerPage";
-            //DataManager.Title = "Renovation Manager Page";
+            //DataManager.pageName = "EquipmentManagerPage";
+            //DataManager.Title = "Equipment Manager Page";
 
-            Renovation.Instance.Id = -1;
-            Renovation.Instance.Description = "";
-            Renovation.Instance.TypeOfRenovation = "Basic";
+            Equipment.Instance.Id = -1;
+            Equipment.Instance.Name = "";
+            Equipment.Instance.Quantity = 1;
+            Equipment.Instance.Location = "";
 
             //DataManager.Show();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dgRenovation.SelectedItem != null)
+            if (dgEquipment.SelectedItem != null)
             {
-                if (MessageBox.Show("Delete renovation with data:\nDescription: " + selectedRenovationItem.Description + "\nTypeOfRenovation: " + selectedRenovationItem.TypeOfRenovation, "Delete Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Delete equipment with data:\nName: " + selectedEquipmentItem.Name + "\nQuantity: " + selectedEquipmentItem.Quantity + "\nLocation: " + selectedEquipmentItem.Location, "Delete Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    renovationService.Delete(selectedRenovationItem.Id);
+                    equipmentService.Delete(selectedEquipmentItem.Id);
                     RefreshPage();
                 }
             }
@@ -123,11 +124,11 @@ namespace HCI_WPF.Pages
 
         public void RefreshPage()
         {
-            renovation.Clear();
-            renovationService = new RenovationService();
-            foreach (Renovation m in renovationService.GetAll())
+            equipment.Clear();
+            equipmentService = new EquipmentService();
+            foreach (Equipment m in equipmentService.GetAll())
             {
-                renovation.Add(m);
+                equipment.Add(m);
             }
         }
     }

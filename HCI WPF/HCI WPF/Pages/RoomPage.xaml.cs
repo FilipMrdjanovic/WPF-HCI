@@ -60,6 +60,8 @@ namespace HCI_WPF.Pages
         {
             if (dgRooms.SelectedItem != null)
             {
+
+                MainPageWPF.ButtonEnabledInstance.enableButton = true;
                 //ManageDataWPF DataManager = new ManageDataWPF();
 
                 //DataManager.pageName = "RoomManagerPage";
@@ -78,6 +80,8 @@ namespace HCI_WPF.Pages
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+
+            MainPageWPF.ButtonEnabledInstance.createButton = true;
 
             //ManageDataWPF DataManager = new ManageDataWPF();
 
@@ -108,6 +112,8 @@ namespace HCI_WPF.Pages
         {
             App.ActivatedPage = this;
             RefreshPage();
+            MainPageWPF.ButtonEnabledInstance.enableButton = false;
+            MainPageWPF.ButtonEnabledInstance.createButton = false;
         }
 
         public void RefreshPage()

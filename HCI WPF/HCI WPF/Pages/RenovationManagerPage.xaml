@@ -9,6 +9,7 @@
       Title="RenovationManagerPage">
 
     <Page.Resources>
+
         <Style x:Key="btnBack" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Template">
@@ -26,6 +27,9 @@
                     <Setter Property="Background" Value="Transparent"/>
                 </Trigger>
             </Style.Triggers>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="Transparent"></Setter>
         </Style>
     </Page.Resources>
 
@@ -50,19 +54,19 @@
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
                  Width="248" FontSize="18" TextChanged="txtDescription_TextChanged"/>
-        <TextBox Name="txtType" 
+        <!-- <TextBox Name="txtType" 
                  BorderThickness="0,0,0,2" 
                  BorderBrush="Black"  
                  HorizontalAlignment="Center" 
                  TextAlignment="Center" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Center" 
-                 Width="248" FontSize="18" TextChanged="txtType_TextChanged"/>
+                 Width="248" FontSize="18" TextChanged="txtType_TextChanged"/> -->
 
         <Button x:Name="btnEdit" Content="EDIT" 
                 IsDefault="True" 
                 HorizontalContentAlignment="Center" 
-                Margin="40,323,236,0" 
+                Margin="138,323,138,0" 
                 VerticalAlignment="Top" 
                 Height="44" 
                 FontSize="22" 
@@ -72,7 +76,7 @@
         <Button x:Name="btnCreate" Content="CREATE" 
                 IsDefault="True" 
                 HorizontalContentAlignment="Center" 
-                Margin="236,323,40,0" 
+                Margin="140,323,136,0" 
                 VerticalAlignment="Top" 
                 Height="44" 
                 FontSize="22" 
@@ -103,6 +107,19 @@
                 </Image.Style>
             </Image>
         </Button>
+        <ComboBox x:Name="cmbType"
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Center" 
+                  Width="248" 
+                  Height="26"
+                  Background="{x:Null}"
+                  BorderThickness="0,0,0,2"
+                  BorderBrush="Black"
+                  UseLayoutRounding="True">
+
+            <ComboBoxItem Content="Basic"/>
+            <ComboBoxItem Content="Advanced"/>
+        </ComboBox>
 
     </Grid>
 

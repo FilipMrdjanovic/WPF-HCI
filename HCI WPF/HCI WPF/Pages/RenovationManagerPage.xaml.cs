@@ -29,26 +29,28 @@ namespace HCI_WPF.Pages
         {
             InitializeComponent();
 
+            if (MainPageWPF.ButtonEnabledInstance.createButton)
+            {
+                btnEdit.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnCreate.Visibility = Visibility.Hidden;
+            }
+
             renovationService = new RenovationService();
 
-            if (txtDescription.Text == null || txtType.Text == null)
-            {
-                btnEdit.IsEnabled = btnCreate.IsEnabled = false;
-            }
+          
             if (Renovation.Instance.Description != "")
                 txtDescription.Text = Renovation.Instance.Description;
 
-            txtType.Text = Renovation.Instance.TypeOfRenovation.ToString();
+            cmbType.Text = Renovation.Instance.TypeOfRenovation.ToString();
 
-            if (Renovation.Instance.Id == -1)
-            {
-                btnEdit.IsEnabled = false;
-            }
         }
 
         private void EditRenovation(object sender, RoutedEventArgs e)
         {
-            if (!Regex.IsMatch(txtDescription.Text, @"^(?!\s*$).+") || !Regex.IsMatch(txtType.Text, @"^(?!\s*$).+")) //Check Not Empty String 
+            if (!Regex.IsMatch(txtDescription.Text, @"^(?!\s*$).+") || !Regex.IsMatch(cmbType.Text, @"^(?!\s*$).+")) //Check Not Empty String 
             {
                 MessageBox.Show("Fill all inputs!", "Inpur Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -56,7 +58,7 @@ namespace HCI_WPF.Pages
             {
                 Renovation renovation = renovationService.GetById(Renovation.Instance.Id);
                 renovation.Description = txtDescription.Text;
-                renovation.TypeOfRenovation = txtType.Text;
+                renovation.TypeOfRenovation = cmbType.Text;
                 renovationService.Update(renovation);
 
                 MainPageWPF.navigateToPage("RenovationPage");
@@ -67,7 +69,7 @@ namespace HCI_WPF.Pages
 
         private void CreateRenovation(object sender, RoutedEventArgs e)
         {
-            if (!Regex.IsMatch(txtDescription.Text, @"^(?!\s*$).+") || !Regex.IsMatch(txtType.Text, @"^(?!\s*$).+")) //Check Not Empty String 
+            if (!Regex.IsMatch(txtDescription.Text, @"^(?!\s*$).+") || !Regex.IsMatch(cmbType.Text, @"^(?!\s*$).+")) //Check Not Empty String 
             {
                 MessageBox.Show("Fill all inputs!", "Inpur Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -78,7 +80,7 @@ namespace HCI_WPF.Pages
                         .DefaultIfEmpty() // Now even if our where causes an empty selection list we will return DefaultIfEmpty.
                         .Max();
 
-                Renovation renovation = new Renovation(maxId + 1, txtDescription.Text, txtType.Text);
+                Renovation renovation = new Renovation(maxId + 1, txtDescription.Text, cmbType.Text);
                 renovationService.Save(renovation);
 
                 MainPageWPF.navigateToPage("RenovationPage");
@@ -93,15 +95,15 @@ namespace HCI_WPF.Pages
 
         private void txtDescription_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtDescription.Text == null || txtType.Text == null)
+            if (txtDescription.Text == null || cmbType.Text == null)
                 btnEdit.IsEnabled = btnCreate.IsEnabled = false;
             else
                 btnEdit.IsEnabled = btnCreate.IsEnabled = true;
         }
 
-        private void txtType_TextChanged(object sender, TextChangedEventArgs e)
+        private void cmbType_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtDescription.Text == null || txtType.Text == null)
+            if (txtDescription.Text == null || cmbType.Text == null)
                 btnEdit.IsEnabled = btnCreate.IsEnabled = false;
             else
                 btnEdit.IsEnabled = btnCreate.IsEnabled = true;

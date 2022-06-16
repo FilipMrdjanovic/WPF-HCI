@@ -61,6 +61,8 @@ namespace HCI_WPF.Pages
         {
             if(dgMedicine.SelectedItem != null)
             {
+
+                MainPageWPF.ButtonEnabledInstance.enableButton = true;
                 //ManageDataWPF DataManager = new ManageDataWPF();
 
                 //DataManager.pageName = "MedicineManagerPage";
@@ -80,6 +82,7 @@ namespace HCI_WPF.Pages
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
 
+            MainPageWPF.ButtonEnabledInstance.createButton = true;
 
             MainPageWPF.navigateToPage("MedicineManagerPage");
 
@@ -111,6 +114,8 @@ namespace HCI_WPF.Pages
         {
             App.ActivatedPage = this;
             RefreshPage();
+            MainPageWPF.ButtonEnabledInstance.enableButton = false;
+            MainPageWPF.ButtonEnabledInstance.createButton = false;
         }
 
         public void RefreshPage()

@@ -29,6 +29,15 @@ namespace HCI_WPF.Pages
         {
             InitializeComponent();
 
+            if (MainPageWPF.ButtonEnabledInstance.createButton)
+            {
+                btnEdit.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnCreate.Visibility = Visibility.Hidden;
+            }
+
             roomService = new RoomService();
 
             if (txtName.Text == null || txtFloor.Text == null)

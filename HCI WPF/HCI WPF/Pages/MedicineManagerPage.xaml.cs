@@ -29,6 +29,14 @@ namespace HCI_WPF.Pages
         {
             InitializeComponent();
 
+            if (MainPageWPF.ButtonEnabledInstance.createButton)
+            {
+                btnEdit.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                btnCreate.Visibility = Visibility.Hidden;
+            }
             medicineService = new MedicineService();
 
             if (txtName.Text == null || txtQuantity.Text == null)

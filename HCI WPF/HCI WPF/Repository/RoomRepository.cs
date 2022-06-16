@@ -84,5 +84,22 @@ namespace HCI_WPF.Repository
 
             WriteToJson();
         }
+
+        public List<string> FindAllTypesOfRoom() 
+        {
+            List<Room> rooms = GetAll();
+            List<string> roomNames = new List<string>();
+            foreach(Room room in rooms)
+                roomNames.Add(room.Name);
+
+            IEnumerable<string> uniqueItems = roomNames.Distinct<string>();
+
+            List<string> allRoom = new List<string>();
+            foreach (string uniqueItem in uniqueItems)
+                allRoom.Add(uniqueItem.ToString());
+
+            return allRoom;
+
+        }
     }
 }

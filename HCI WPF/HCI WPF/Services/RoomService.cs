@@ -34,5 +34,10 @@ namespace HCI_WPF.Services
         {
             roomRepository.Update(room);
         }
+
+        public List<string> FindAllTypesOfRoom()
+        {
+            return roomRepository.FindAllTypesOfRoom();
+        }
     }
 }

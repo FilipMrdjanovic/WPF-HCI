@@ -18,9 +18,32 @@ namespace HCI_WPF.WPF
     /// <summary>
     /// Interaction logic for MainPageWPF.xaml
     /// </summary>
+    /// 
+
+    public class ButtonEnabled
+    {
+        public bool enableButton { get; set; }
+        public bool createButton { get; set; }
+
+        public ButtonEnabled()
+        {
+        }
+
+        public ButtonEnabled(bool enableButton, bool createButton)
+        {
+            this.enableButton = enableButton;
+            this.createButton = createButton;
+        }
+
+        public static readonly ButtonEnabled Instance = new ButtonEnabled();
+
+    }
+
     public partial class MainPageWPF : Window
     {
+        public static readonly ButtonEnabled ButtonEnabledInstance = new ButtonEnabled();
         public static readonly MainPageWPF Instance = new MainPageWPF(User.Instance.Id);
+
         public MainPageWPF(int id)
         {
             InitializeComponent();
@@ -49,7 +72,6 @@ namespace HCI_WPF.WPF
         }
         private void btnRenovation_Click(object sender, RoutedEventArgs e)
         {
-
             navigateToPage("RenovationPage");
         }
         private void btnLogout_Click(object sender, RoutedEventArgs e)
@@ -59,5 +81,9 @@ namespace HCI_WPF.WPF
             this.Close();
         }
 
+        private void btnEquipment_Click(object sender, RoutedEventArgs e)
+        {
+            navigateToPage("EquipmentPage");
+        }
     }
 }
