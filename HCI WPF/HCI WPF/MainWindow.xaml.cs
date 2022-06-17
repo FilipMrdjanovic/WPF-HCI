@@ -25,11 +25,21 @@ namespace HCI_WPF
     public partial class MainWindow : Window
     {
         UserController controller = new UserController();
+        public bool firstTime { get; set; }
+
+        public static readonly MainWindow Instance = new MainWindow();
+
         public MainWindow()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            
+
+            if (firstTime)
+            {
+                var Help = new HelpWPF();
+                Help.Show();
+                firstTime = false;
+            }
         }
 
         private void SignInButton(object sender, RoutedEventArgs e)
@@ -41,7 +51,7 @@ namespace HCI_WPF
                 User loggedUser = controller.Login(txtUsername.Text, txtPassword.Password);
                 if (loggedUser != null)
                 {
-                    var MainPage = new MainPageWPF(loggedUser.Id);
+                    var MainPage = new MainPageWPF(loggedUser.Id, firstTime);
                     User.Instance.Id = loggedUser.Id;
                     MainPage.Show();
                     this.Close();
@@ -55,14 +65,10 @@ namespace HCI_WPF
 
         }
 
-        private void HelpButton(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnHelp_Click(object sender, RoutedEventArgs e)
         {
-
+            var Help = new HelpWPF();
+            Help.Show();    
         }
     }
 }

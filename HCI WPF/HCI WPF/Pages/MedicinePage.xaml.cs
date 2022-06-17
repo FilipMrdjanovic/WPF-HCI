@@ -102,7 +102,7 @@ namespace HCI_WPF.Pages
         {
             if (dgMedicine.SelectedItem != null)
             {
-                if (MessageBox.Show("Delete medicine with data:\nName: " + selectedMedicineItem.Name + "\nQuantity: " + selectedMedicineItem.Quantity, "Login Error", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Delete medicine with data:\nName: " + selectedMedicineItem.Name + "\nQuantity: " + selectedMedicineItem.Quantity, "Delete Warning", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     medicineService.Delete(selectedMedicineItem.Id);
                     RefreshPage();

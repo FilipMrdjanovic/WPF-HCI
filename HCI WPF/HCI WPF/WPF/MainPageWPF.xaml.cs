@@ -42,9 +42,9 @@ namespace HCI_WPF.WPF
     public partial class MainPageWPF : Window
     {
         public static readonly ButtonEnabled ButtonEnabledInstance = new ButtonEnabled();
-        public static readonly MainPageWPF Instance = new MainPageWPF(User.Instance.Id);
+        public static readonly MainPageWPF Instance = new MainPageWPF(User.Instance.Id, false);
 
-        public MainPageWPF(int id)
+        public MainPageWPF(int id, bool firstTime)
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -89,6 +89,12 @@ namespace HCI_WPF.WPF
         private void btnStatistics_Click(object sender, RoutedEventArgs e)
         {
             navigateToPage("StatisticsPage");
+        }
+
+        private void btnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            var Help = new HelpWPF();
+            Help.Show();
         }
     }
 }

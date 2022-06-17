@@ -68,6 +68,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Row="0" 
                     Grid.ColumnSpan="5"
+                    Grid.RowSpan="1"
                     Background="#ffc107">
 
             <Border BorderThickness="0" BorderBrush="Black">
@@ -97,6 +98,8 @@
                     </Image>
                 </Button>
             </Border>
+
+            
         </StackPanel>
         <StackPanel Grid.Row="1" 
                     Grid.ColumnSpan="5"
